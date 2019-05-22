@@ -1,7 +1,7 @@
 # Day 1
-`
-#### 面试时，考官出的算法：生成一组随机数，顺序排序输出
 
+#### 面试时，考官出的算法：生成一组随机数，顺序排序输出
+(```)
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -31,4 +31,4 @@ int main() {
     printf("%d\n",a[i]);
   }
 }
-`
+(```)
