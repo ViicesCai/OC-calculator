@@ -1,10 +1,12 @@
 # Day 1
 
 #### 面试时，考官出的算法：生成一组随机数，顺序排序输出
-(```)
+
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+// To execute C, please define "int main()"
 
 int main() {
   int a[20];
@@ -31,4 +33,4 @@ int main() {
     printf("%d\n",a[i]);
   }
 }
-(```)
+```
