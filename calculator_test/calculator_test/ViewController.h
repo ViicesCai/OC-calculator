@@ -10,16 +10,12 @@
 
 @interface ViewController : UIViewController
 
-// 定义按钮类型
-
-// 数字按钮
-@property(strong,nonatomic) UIButton *numUIButton_;
-// 运算符按钮
-@property(strong,nonatomic) UILabel *view_UILabel;
-
+// 定义全局视图
+@property(strong,nonatomic) UILabel *viewUILabel;
 // 定义变量
 @property(assign,nonatomic) double num1,num2;
-@property(assign,nonatomic) NSString *str;
+@property(retain,nonatomic) NSString *str;
+@property(strong,nonatomic) NSMutableString *string;
 @property(assign,nonatomic) int x;
 @end
 
