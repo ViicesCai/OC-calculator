@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-// To execute C, please define "int main()"
 
 int main() {
   int a[20];
