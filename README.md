@@ -60,7 +60,12 @@
      [_string stringByAppendingString:_viewUILabel.text];
      [_string stringByAppendingFormat:@"%@",_viewUILable.text];
      ```
-
+## 5-23
++ 基本实现了计算器的基础功能，修改了部分逻辑错误。
++ 重新对按钮进行定义，修改了按钮原来的造型。
++ 增加%、.对运算功能。
++ 实现了连续运算。
+**许多地方还需要完善，解决用户不规范导致的运算逻辑的错误**
      
 
    
