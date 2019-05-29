@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		610D4B9F229385EF00FE520D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4B9E229385EF00FE520D /* AppDelegate.m */; };
 		610D4BA2229385EF00FE520D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4BA1229385EF00FE520D /* ViewController.m */; };
-		610D4BA5229385EF00FE520D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610D4BA3229385EF00FE520D /* Main.storyboard */; };
 		610D4BA7229385F900FE520D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610D4BA6229385F900FE520D /* Assets.xcassets */; };
-		610D4BAA229385F900FE520D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610D4BA8229385F900FE520D /* LaunchScreen.storyboard */; };
 		610D4BAD229385F900FE520D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4BAC229385F900FE520D /* main.m */; };
 		610D4BB7229385F900FE520D /* calculator_testUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4BB6229385F900FE520D /* calculator_testUITests.m */; };
+		615314AC229E12CF00DBADF7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615314AB229E12CF00DBADF7 /* LoginViewController.m */; };
+		615314AF229E148200DBADF7 /* textBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 615314AE229E148200DBADF7 /* textBackground.m */; };
+		615314B2229E1B2C00DBADF7 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615314B1229E1B2C00DBADF7 /* RegisterViewController.m */; };
+		615314B5229E4A2F00DBADF7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 615314B4229E4A2F00DBADF7 /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +34,20 @@
 		610D4B9E229385EF00FE520D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		610D4BA0229385EF00FE520D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		610D4BA1229385EF00FE520D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		610D4BA4229385EF00FE520D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		610D4BA6229385F900FE520D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		610D4BA9229385F900FE520D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		610D4BAB229385F900FE520D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		610D4BAC229385F900FE520D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		610D4BB2229385F900FE520D /* calculator_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculator_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		610D4BB6229385F900FE520D /* calculator_testUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calculator_testUITests.m; sourceTree = "<group>"; };
 		610D4BB8229385F900FE520D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		615314AA229E12CF00DBADF7 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		615314AB229E12CF00DBADF7 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		615314AD229E148200DBADF7 /* textBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = textBackground.h; sourceTree = "<group>"; };
+		615314AE229E148200DBADF7 /* textBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = textBackground.m; sourceTree = "<group>"; };
+		615314B0229E1B2C00DBADF7 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		615314B1229E1B2C00DBADF7 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		615314B4229E4A2F00DBADF7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		61656F72229D1BF60015B2EC /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615314B5229E4A2F00DBADF7 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +75,7 @@
 				610D4B9C229385EF00FE520D /* calculator_test */,
 				610D4BB5229385F900FE520D /* calculator_testUITests */,
 				610D4B9B229385EF00FE520D /* Products */,
+				615314B3229E4A2F00DBADF7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,11 +95,16 @@
 				610D4B9E229385EF00FE520D /* AppDelegate.m */,
 				610D4BA0229385EF00FE520D /* ViewController.h */,
 				610D4BA1229385EF00FE520D /* ViewController.m */,
-				610D4BA3229385EF00FE520D /* Main.storyboard */,
+				615314AA229E12CF00DBADF7 /* LoginViewController.h */,
+				615314AB229E12CF00DBADF7 /* LoginViewController.m */,
+				615314B0229E1B2C00DBADF7 /* RegisterViewController.h */,
+				615314B1229E1B2C00DBADF7 /* RegisterViewController.m */,
+				615314AD229E148200DBADF7 /* textBackground.h */,
+				615314AE229E148200DBADF7 /* textBackground.m */,
 				610D4BA6229385F900FE520D /* Assets.xcassets */,
-				610D4BA8229385F900FE520D /* LaunchScreen.storyboard */,
 				610D4BAB229385F900FE520D /* Info.plist */,
 				610D4BAC229385F900FE520D /* main.m */,
+				61656F72229D1BF60015B2EC /* Header.h */,
 			);
 			path = calculator_test;
 			sourceTree = "<group>";
@@ -101,6 +116,14 @@
 				610D4BB8229385F900FE520D /* Info.plist */,
 			);
 			path = calculator_testUITests;
+			sourceTree = "<group>";
+		};
+		615314B3229E4A2F00DBADF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				615314B4229E4A2F00DBADF7 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				610D4BAA229385F900FE520D /* LaunchScreen.storyboard in Resources */,
 				610D4BA7229385F900FE520D /* Assets.xcassets in Resources */,
-				610D4BA5229385EF00FE520D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615314AC229E12CF00DBADF7 /* LoginViewController.m in Sources */,
+				615314B2229E1B2C00DBADF7 /* RegisterViewController.m in Sources */,
 				610D4BA2229385EF00FE520D /* ViewController.m in Sources */,
+				615314AF229E148200DBADF7 /* textBackground.m in Sources */,
 				610D4BAD229385F900FE520D /* main.m in Sources */,
 				610D4B9F229385EF00FE520D /* AppDelegate.m in Sources */,
 			);
@@ -226,25 +250,6 @@
 			targetProxy = 610D4BB3229385F900FE520D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		610D4BA3229385EF00FE520D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				610D4BA4229385EF00FE520D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		610D4BA8229385F900FE520D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				610D4BA9229385F900FE520D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		610D4BB9229385F900FE520D /* Debug */ = {
@@ -372,6 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "test.calculator-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
 			};
 			name = Debug;
 		};
@@ -388,6 +394,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "test.calculator-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
 			};
 			name = Release;
 		};

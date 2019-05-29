@@ -10,22 +10,34 @@
 
 
 #import "ViewController.h"
+#import "Header.h"
 #import <math.h>
 
 @interface ViewController ()
+
+@property (strong, nonatomic) UITextField *loginTextField;
+@property (strong, nonatomic) UITextField *passwordTextField;
+@property (strong, nonatomic) UIButton *loginButton;
+
 @end
 
 @implementation ViewController
 // 此行为内可以创建按钮并定义格式（在此加入特效）
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:247/255.0f green:248/255.0f blue:243/255.0f alpha:1];
+    UIView *screenView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    screenView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:screenView];
+    
     // 定义计算器的显示屏幕
     // 注意点：应为我们在ViewController.h中已经声明了这个全局变量，所以在这里调用时要在变量名前加上 _
-    _viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, 340, 80)];
+    _viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight/3)];
     // 计算器默认显示0
     _viewLabel.text = @"0";
     // 计算器默认用黑色字体输出
-    _viewLabel.textColor = [UIColor blackColor];
+    _viewLabel.textColor = [UIColor whiteColor];
     // 计算器的背景为绿色
     // _viewUILabel.backgroundColor = [UIColor greenColor];
     // 计算器的显示文本默认向右对齐
