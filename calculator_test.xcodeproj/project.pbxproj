@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6108FC4122A0FAAE00758881 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6108FC4022A0FAAE00758881 /* unlock.png */; };
+		6108FC4322A0FAC100758881 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6108FC4222A0FAC100758881 /* user.png */; };
+		6108FC4522A112F300758881 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6108FC4422A112F300758881 /* lock.png */; };
 		610D4B9F229385EF00FE520D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4B9E229385EF00FE520D /* AppDelegate.m */; };
 		610D4BA2229385EF00FE520D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4BA1229385EF00FE520D /* ViewController.m */; };
 		610D4BA7229385F900FE520D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610D4BA6229385F900FE520D /* Assets.xcassets */; };
 		610D4BAD229385F900FE520D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4BAC229385F900FE520D /* main.m */; };
 		610D4BB7229385F900FE520D /* calculator_testUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4BB6229385F900FE520D /* calculator_testUITests.m */; };
+		611FC095229F869D00E82E60 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 611FC094229F869D00E82E60 /* DataModel.m */; };
+		611FC098229F8B3900E82E60 /* DBOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 611FC097229F8B3900E82E60 /* DBOperation.m */; };
 		615314AC229E12CF00DBADF7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615314AB229E12CF00DBADF7 /* LoginViewController.m */; };
 		615314AF229E148200DBADF7 /* textBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 615314AE229E148200DBADF7 /* textBackground.m */; };
 		615314B2229E1B2C00DBADF7 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615314B1229E1B2C00DBADF7 /* RegisterViewController.m */; };
@@ -29,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6108FC4022A0FAAE00758881 /* unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unlock.png; path = ../../Downloads/unlock.png; sourceTree = "<group>"; };
+		6108FC4222A0FAC100758881 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = ../../Downloads/user.png; sourceTree = "<group>"; };
+		6108FC4422A112F300758881 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = ../../Downloads/lock.png; sourceTree = "<group>"; };
 		610D4B9A229385EF00FE520D /* calculator_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calculator_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		610D4B9D229385EF00FE520D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		610D4B9E229385EF00FE520D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,6 +48,11 @@
 		610D4BB2229385F900FE520D /* calculator_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculator_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		610D4BB6229385F900FE520D /* calculator_testUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calculator_testUITests.m; sourceTree = "<group>"; };
 		610D4BB8229385F900FE520D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		611FC093229F869D00E82E60 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		611FC094229F869D00E82E60 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
+		611FC096229F8B3900E82E60 /* DBOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBOperation.h; sourceTree = "<group>"; };
+		611FC097229F8B3900E82E60 /* DBOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBOperation.m; sourceTree = "<group>"; };
+		6142235C22A08F5800DDDCB2 /* UserDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = UserDB.sqlite; sourceTree = "<group>"; };
 		615314AA229E12CF00DBADF7 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		615314AB229E12CF00DBADF7 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		615314AD229E148200DBADF7 /* textBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = textBackground.h; sourceTree = "<group>"; };
@@ -72,6 +85,10 @@
 		610D4B91229385EF00FE520D = {
 			isa = PBXGroup;
 			children = (
+				6108FC4422A112F300758881 /* lock.png */,
+				6108FC4222A0FAC100758881 /* user.png */,
+				6108FC4022A0FAAE00758881 /* unlock.png */,
+				6142235B22A08F5800DDDCB2 /* DataBase */,
 				610D4B9C229385EF00FE520D /* calculator_test */,
 				610D4BB5229385F900FE520D /* calculator_testUITests */,
 				610D4B9B229385EF00FE520D /* Products */,
@@ -101,6 +118,10 @@
 				615314B1229E1B2C00DBADF7 /* RegisterViewController.m */,
 				615314AD229E148200DBADF7 /* textBackground.h */,
 				615314AE229E148200DBADF7 /* textBackground.m */,
+				611FC093229F869D00E82E60 /* DataModel.h */,
+				611FC094229F869D00E82E60 /* DataModel.m */,
+				611FC096229F8B3900E82E60 /* DBOperation.h */,
+				611FC097229F8B3900E82E60 /* DBOperation.m */,
 				610D4BA6229385F900FE520D /* Assets.xcassets */,
 				610D4BAB229385F900FE520D /* Info.plist */,
 				610D4BAC229385F900FE520D /* main.m */,
@@ -116,6 +137,14 @@
 				610D4BB8229385F900FE520D /* Info.plist */,
 			);
 			path = calculator_testUITests;
+			sourceTree = "<group>";
+		};
+		6142235B22A08F5800DDDCB2 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				6142235C22A08F5800DDDCB2 /* UserDB.sqlite */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		615314B3229E4A2F00DBADF7 /* Frameworks */ = {
@@ -206,6 +235,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6108FC4522A112F300758881 /* lock.png in Resources */,
+				6108FC4322A0FAC100758881 /* user.png in Resources */,
+				6108FC4122A0FAAE00758881 /* unlock.png in Resources */,
 				610D4BA7229385F900FE520D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,8 +260,10 @@
 				615314B2229E1B2C00DBADF7 /* RegisterViewController.m in Sources */,
 				610D4BA2229385EF00FE520D /* ViewController.m in Sources */,
 				615314AF229E148200DBADF7 /* textBackground.m in Sources */,
+				611FC095229F869D00E82E60 /* DataModel.m in Sources */,
 				610D4BAD229385F900FE520D /* main.m in Sources */,
 				610D4B9F229385EF00FE520D /* AppDelegate.m in Sources */,
+				611FC098229F8B3900E82E60 /* DBOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

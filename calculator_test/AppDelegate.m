@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "DBOperation.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 @end
@@ -17,14 +19,26 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // 设置主屏：所有的视图依托在此之上
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    // 声明 LoginView控制器
     LoginViewController *loginViewController = [[LoginViewController alloc] init];
+    // 加入导航栏：实现视图切换
+    // 设置根视图：即APP启动时的首页
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     self.window.rootViewController = [UIViewController new];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
+    
+    // SQLITE3数据库的操作：程序开启时数据库也开启
+    // 声明对象
+    DBOperation *opertation = [[DBOperation alloc] init];
+    // 打开数据库
+    [opertation openDataBase];
+    // 创建数据表
+    //[opertation createDataBaseTable];
     return YES;
 }
 
