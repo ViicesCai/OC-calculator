@@ -7,6 +7,11 @@
 //
 #import "DBOperation.h"
 #import <sqlite3.h>
+#import <sys/socket.h>
+#import <sys/sockio.h>
+#import <sys/ioctl.h>
+#import <net/if.h>
+#import <arpa/inet.h>
 
 @implementation DBOperation
 
@@ -42,7 +47,8 @@ static sqlite3 *database = nil;
 }
 
 // 创建数据表
--(void)createDataBaseTable{
+-(void)createDataBaseTable
+{
         // 定义创建表格的sql语句
         // 可修改（可以引入参数，使整个结构更有适用性）
         NSString *createSql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS t_user(username TEXT PRIMARY KEY,password TEXT NOT NULL);"];
@@ -184,18 +190,134 @@ static sqlite3 *database = nil;
     [formatter setTimeZone:timeZone];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *timeString = [formatter stringFromDate:[NSDate date]]; NSLog(@"用户：%@ 的登入时间为：%@",model.username,timeString);
-    // 配置保存路径
-    //NSString *logFilePath = [NSString stringWithFormat:@"/Users/fz500net/Desktop/calculator_test/DataBase/"];
-    
-    // 设置文件名
-    //NSString *fileName = [NSString stringWithFormat:@"%@:登入日志.txt",model.username];
-    
-    // 创建文件
-    //NSString *createFile = [logFilePath stringByAppendingPathComponent:fileName];
-    
-    // 将生成的数据保存至文件中
-    //freopen([createFile cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
-    //freopen([createFile cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
     
 }
+
+-(void)currentGMT:(DataModel *)model{
+    NSDate *date = [NSDate date];
+    NSTimeZone *tzGMT = [NSTimeZone timeZoneWithName:@"GMT"];
+    [NSTimeZone setDefaultTimeZone:tzGMT];
+    NSDateFormatter *iosDateFormater = [[NSDateFormatter alloc] init];
+    iosDateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss tt 'GMT'";
+    iosDateFormater.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    NSString *timeString = [iosDateFormater stringFromDate: date];
+    NSLog(@"用户：%@ 的登入时间为：%@",model.username,timeString);
+}
+
+- (void)getInternetDate:(DataModel *)model
+{
+    
+    NSString *urlString = @"https://m.baidu.com";
+    urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString: urlString]];
+    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+    [request setTimeoutInterval: 2];
+    [request setHTTPShouldHandleCookies:FALSE];
+    [request setHTTPMethod:@"GET"];
+    
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        if (error == nil && response != nil){
+            
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            NSDictionary *allHeaderFields = [httpResponse allHeaderFields];
+            
+            NSString *dateStr = [allHeaderFields objectForKey:@"Date"];
+            dateStr = [dateStr substringFromIndex:5];
+            dateStr = [dateStr substringToIndex:[dateStr length]-4];
+            NSDateFormatter *dateMatter = [[NSDateFormatter alloc] init];
+            dateMatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+            [dateMatter setDateFormat:@"dd MMM yyyy HH:mm:ss"];
+            NSDate *netDate = [[dateMatter dateFromString: dateStr] dateByAddingTimeInterval:-8];
+            
+            NSTimeZone *zone = [NSTimeZone systemTimeZone];
+            NSInteger interval = [zone secondsFromGMTForDate: netDate];
+            NSDate *localeDate = [netDate dateByAddingTimeInterval: interval];
+            
+            NSString *timeString = [dateMatter stringFromDate: localeDate];
+            NSLog(@"用户：%@ 的登入时间为：%@",model.username,timeString);
+        }else{
+            NSLog(@"%@",error);
+        }
+    }];
+    
+    [task resume];
+}
+
+-(void)getDeviceIPAddresses
+{
+    int sockfd = socket(AF_INET,SOCK_DGRAM, 0);
+    // if (sockfd <</span> 0) return nil;
+    NSMutableArray *ips = [NSMutableArray array];
+    
+    int BUFFERSIZE =4096;
+    
+    struct ifconf ifc;
+    
+    char buffer[BUFFERSIZE], *ptr, lastname[IFNAMSIZ], *cptr;
+    
+    struct ifreq *ifr, ifrcopy;
+    
+    ifc.ifc_len = BUFFERSIZE;
+    
+    ifc.ifc_buf = buffer;
+    
+    if (ioctl(sockfd,SIOCGIFCONF, &ifc) >= 0){
+        
+        for (ptr = buffer; ptr < buffer + ifc.ifc_len; ){
+            
+            ifr = (struct ifreq *)ptr;
+            
+            int len =sizeof(struct sockaddr);
+            
+            if (ifr->ifr_addr.sa_len > len) {
+                len = ifr->ifr_addr.sa_len;
+            }
+            
+            ptr += sizeof(ifr->ifr_name) + len;
+            
+            if (ifr->ifr_addr.sa_family !=AF_INET) continue;
+            
+            if ((cptr = (char *)strchr(ifr->ifr_name,':')) != NULL) *cptr =0;
+            
+            if (strncmp(lastname, ifr->ifr_name,IFNAMSIZ) == 0)continue;
+            
+            memcpy(lastname, ifr->ifr_name,IFNAMSIZ);
+            
+            ifrcopy = *ifr;
+            
+            ioctl(sockfd,SIOCGIFFLAGS, &ifrcopy);
+            
+            if ((ifrcopy.ifr_flags &IFF_UP) == 0)continue;
+            
+            NSString *ip = [NSString stringWithFormat:@"%s",inet_ntoa(((struct sockaddr_in *)&ifr->ifr_addr)->sin_addr)];
+            [ips addObject:ip];
+        }
+    }
+    close(sockfd);
+    
+    NSString *deviceIP =@"";
+    
+    for (int i=0; i < ips.count; i++){
+        if (ips.count >0){
+            deviceIP = [NSString stringWithFormat:@"%@",ips.lastObject];
+        }
+    }
+    NSLog(@"%@",deviceIP);
+}
+
+/**
+-(void)createUserDataBaseTable:(DataModel *)model
+{
+    NSString *createSql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(username TEXT NOT NULL PRIMARY KEY,IpAddress TEXT NOT NULL,LoginTime TEXT NOT NULL)",model.username];
+    if (sqlite3_exec(database, createSql.UTF8String, NULL, NULL, &errorMessage) == SQLITE_OK) {
+        NSLog(@"数据表创建成功");
+    }else{
+        NSLog(@"数据表创建失败");
+    }
+}
+**/
 @end

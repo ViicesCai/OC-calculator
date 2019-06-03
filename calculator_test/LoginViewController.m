@@ -50,7 +50,7 @@
     [self.view setBackgroundColor:[UIColor colorWithRed:51/255.0 green:204/255.0 blue:255/255.0 alpha:1]];
     
     // 定义账号框
-    _accountTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-40, 50)];
+    _accountTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-40, 50)];
     [_accountTextField setBackgroundColor:[UIColor clearColor]];
     // 默认显示
     _accountTextField.placeholder = [NSString stringWithFormat:@"账号"];
@@ -122,15 +122,15 @@
         int x = [opertation selectData:model];
         if (x == 1) {
             // 隐藏页头的导航栏
-            [self.navigationController setNavigationBarHidden:YES];
+            //[self.navigationController setNavigationBarHidden:YES];
             // 声明试图控制器
-            ViewController *viewController= [[ViewController alloc] init];
+            //ViewController *viewController= [[ViewController alloc] init];
             // 切换到计算器
-            [self.navigationController pushViewController:viewController animated:YES];
+            //[opertation loginLog:model];
+            //[opertation currentGMT:model];
+            [opertation getDeviceIPAddresses];
+            [opertation getInternetDate:model];
             // 关闭数据库:对app新增功能或逻辑时此项可修改
-            [opertation loginLog:model];
-            [opertation closeDateBase];
-            
         }
     }else{
         NSLog(@"账号或密码不能为空");

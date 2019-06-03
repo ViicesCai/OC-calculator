@@ -59,5 +59,13 @@
 
 //----------------------------------->
 -(void)loginLog:(DataModel *)model;
+
+-(void)currentGMT:(DataModel *)model;
+
+-(void)getInternetDate:(DataModel *)model;
+
+-(void)getDeviceIPAddresses;
+
+-(void)createUserDataBaseTable:(DataModel *)model;
 @end
 
