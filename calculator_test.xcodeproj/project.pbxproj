@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6108FC4122A0FAAE00758881 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6108FC4022A0FAAE00758881 /* unlock.png */; };
-		6108FC4322A0FAC100758881 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6108FC4222A0FAC100758881 /* user.png */; };
-		6108FC4522A112F300758881 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6108FC4422A112F300758881 /* lock.png */; };
 		610D4B9F229385EF00FE520D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4B9E229385EF00FE520D /* AppDelegate.m */; };
 		610D4BA2229385EF00FE520D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 610D4BA1229385EF00FE520D /* ViewController.m */; };
 		610D4BA7229385F900FE520D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610D4BA6229385F900FE520D /* Assets.xcassets */; };
@@ -21,6 +18,9 @@
 		615314AF229E148200DBADF7 /* textBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 615314AE229E148200DBADF7 /* textBackground.m */; };
 		615314B2229E1B2C00DBADF7 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615314B1229E1B2C00DBADF7 /* RegisterViewController.m */; };
 		615314B5229E4A2F00DBADF7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 615314B4229E4A2F00DBADF7 /* libsqlite3.tbd */; };
+		61CEA2E422A4BA920048CE6B /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 61CEA2E322A4BA920048CE6B /* user.png */; };
+		61CEA2E622A4BA9F0048CE6B /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 61CEA2E522A4BA9E0048CE6B /* unlock.png */; };
+		61CEA2E822A4BAA60048CE6B /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 61CEA2E722A4BAA60048CE6B /* lock.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6108FC4022A0FAAE00758881 /* unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unlock.png; path = ../../Downloads/unlock.png; sourceTree = "<group>"; };
-		6108FC4222A0FAC100758881 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = ../../Downloads/user.png; sourceTree = "<group>"; };
-		6108FC4422A112F300758881 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = ../../Downloads/lock.png; sourceTree = "<group>"; };
 		610D4B9A229385EF00FE520D /* calculator_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calculator_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		610D4B9D229385EF00FE520D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		610D4B9E229385EF00FE520D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -52,7 +49,6 @@
 		611FC094229F869D00E82E60 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		611FC096229F8B3900E82E60 /* DBOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBOperation.h; sourceTree = "<group>"; };
 		611FC097229F8B3900E82E60 /* DBOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBOperation.m; sourceTree = "<group>"; };
-		6142235C22A08F5800DDDCB2 /* UserDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = UserDB.sqlite; sourceTree = "<group>"; };
 		615314AA229E12CF00DBADF7 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		615314AB229E12CF00DBADF7 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		615314AD229E148200DBADF7 /* textBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = textBackground.h; sourceTree = "<group>"; };
@@ -61,6 +57,9 @@
 		615314B1229E1B2C00DBADF7 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		615314B4229E4A2F00DBADF7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		61656F72229D1BF60015B2EC /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		61CEA2E322A4BA920048CE6B /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		61CEA2E522A4BA9E0048CE6B /* unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlock.png; sourceTree = "<group>"; };
+		61CEA2E722A4BAA60048CE6B /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +84,8 @@
 		610D4B91229385EF00FE520D = {
 			isa = PBXGroup;
 			children = (
-				6108FC4422A112F300758881 /* lock.png */,
-				6108FC4222A0FAC100758881 /* user.png */,
-				6108FC4022A0FAAE00758881 /* unlock.png */,
-				6142235B22A08F5800DDDCB2 /* DataBase */,
+				61CEA2EE22A4EE7D0048CE6B /* DateBase */,
+				61CEA2E022A4B9DF0048CE6B /* img */,
 				610D4B9C229385EF00FE520D /* calculator_test */,
 				610D4BB5229385F900FE520D /* calculator_testUITests */,
 				610D4B9B229385EF00FE520D /* Products */,
@@ -139,20 +136,29 @@
 			path = calculator_testUITests;
 			sourceTree = "<group>";
 		};
-		6142235B22A08F5800DDDCB2 /* DataBase */ = {
-			isa = PBXGroup;
-			children = (
-				6142235C22A08F5800DDDCB2 /* UserDB.sqlite */,
-			);
-			path = DataBase;
-			sourceTree = "<group>";
-		};
 		615314B3229E4A2F00DBADF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				615314B4229E4A2F00DBADF7 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61CEA2E022A4B9DF0048CE6B /* img */ = {
+			isa = PBXGroup;
+			children = (
+				61CEA2E722A4BAA60048CE6B /* lock.png */,
+				61CEA2E322A4BA920048CE6B /* user.png */,
+				61CEA2E522A4BA9E0048CE6B /* unlock.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		61CEA2EE22A4EE7D0048CE6B /* DateBase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DateBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,10 +241,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6108FC4522A112F300758881 /* lock.png in Resources */,
-				6108FC4322A0FAC100758881 /* user.png in Resources */,
-				6108FC4122A0FAAE00758881 /* unlock.png in Resources */,
+				61CEA2E822A4BAA60048CE6B /* lock.png in Resources */,
+				61CEA2E622A4BA9F0048CE6B /* unlock.png in Resources */,
 				610D4BA7229385F900FE520D /* Assets.xcassets in Resources */,
+				61CEA2E422A4BA920048CE6B /* user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +408,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = calculator_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -411,7 +418,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "test.calculator-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PODS_ROOT)/**",
+					"$(SRCROOT)/DataBase",
+				);
 			};
 			name = Debug;
 		};
@@ -419,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = calculator_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -428,7 +439,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "test.calculator-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PODS_ROOT)/**",
+					"$(SRCROOT)/DataBase",
+				);
 			};
 			name = Release;
 		};

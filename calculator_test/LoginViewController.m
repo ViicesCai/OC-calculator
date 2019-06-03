@@ -65,7 +65,7 @@
     [_backgroundView addSubview:_accountTextField];
     
     // 定义密码框
-    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width-40, 50)];
+    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 50, self.view.frame.size.width-40, 50)];
     [_passwordTextField setBackgroundColor:[UIColor clearColor]];
     // 默认显示
     _passwordTextField.placeholder = [NSString stringWithFormat:@"密码"];
@@ -121,15 +121,17 @@
     if (![model.username isEqual:@""] && ![model.password isEqual:@""]) {
         int x = [opertation selectData:model];
         if (x == 1) {
+            // 获取网络层数据
+            [opertation getInternetDate:model];
             // 隐藏页头的导航栏
-            //[self.navigationController setNavigationBarHidden:YES];
+            // [self.navigationController setNavigationBarHidden:YES];
             // 声明试图控制器
-            //ViewController *viewController= [[ViewController alloc] init];
+            // ViewController *viewController= [[ViewController alloc] init];
             // 切换到计算器
+            // [self.navigationController pushViewController:viewController animated:YES];
             //[opertation loginLog:model];
             //[opertation currentGMT:model];
-            [opertation getDeviceIPAddresses];
-            [opertation getInternetDate:model];
+            
             // 关闭数据库:对app新增功能或逻辑时此项可修改
         }
     }else{

@@ -38,7 +38,8 @@
     // 打开数据库
     [opertation openDataBase];
     // 创建数据表
-    //[opertation createDataBaseTable];
+    [opertation createDataBaseTable];
+    [opertation createUserDataBaseTable];
     return YES;
 }
 

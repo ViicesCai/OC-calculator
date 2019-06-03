@@ -12,6 +12,7 @@
 #import <sys/ioctl.h>
 #import <net/if.h>
 #import <arpa/inet.h>
+#import <CommonCrypto/CommonCrypto.h>
 
 @implementation DBOperation
 
@@ -20,7 +21,10 @@ static sqlite3 *database = nil;
 // 数据库的存放路径
 -(NSString *)documentsFilePath{
     // 把文件目录与文件名拼接成'UserDB.sqlite'文件的路径
-    filePath = [NSString stringWithFormat:@"/Users/fz500net/Desktop/calculator_test/DataBase/UserDB.sqlite"];
+    documentDirectoty = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    filePath = [documentDirectoty stringByAppendingPathComponent:@"UserDB.sqlite"];
+    // 定义文件
+
     return filePath;
 }
 
@@ -69,6 +73,9 @@ static sqlite3 *database = nil;
     NSLog(@"%@,%@",model.username,model.password);
     if (sqlite3_prepare_v2(database, addSql.UTF8String, -1, &statement, NULL) == SQLITE_OK) {
         NSLog(@"语句正确");
+        
+        // 密码采用MD5加密
+        model.password = [self MD5ForLower32Bite:model.password];
         // 在确认添加语句没有错误之后
         // 声明两个字符数组用来接收传回的数值
         const char* charUsername = [model.username UTF8String];
@@ -79,9 +86,10 @@ static sqlite3 *database = nil;
         sqlite3_bind_text(statement, 1, charUsername, -1, NULL);
         sqlite3_bind_text(statement, 2, charPassword, -1, NULL);
         
+        
         // SQL执行结果
         if (sqlite3_step(statement) == SQLITE_DONE) {
-            NSLog(@"插入成功");
+            NSLog(@"插入成功,%@",model.password);
         }else{
             NSLog(@"插入失败");
         }
@@ -148,12 +156,17 @@ static sqlite3 *database = nil;
 }
 
 // 查询数据
+// 检索密码的方式可能需要修改！
 -(int)selectData:(DataModel *)model{
     // 定义SQL语句
     NSString *selectSql = [NSString stringWithFormat:@"SELECT username,password FROM t_user"];
     
     if (sqlite3_prepare_v2(database, selectSql.UTF8String, -1, &statement, NULL) == SQLITE_OK) {
         NSLog(@"语句正确");
+        
+        // 将输入的值加密成MD5与数据库中存入的密码匹配
+        
+        model.password = [self MD5ForLower32Bite:model.password];
         while (sqlite3_step(statement) == SQLITE_ROW) {
             // 声明一个二维指针('sqlite3_column_text'是一个存放了数据的地址，我们定义一个char指针调用其中的值)
             // 取出第一列的值：默认从0开始
@@ -165,9 +178,10 @@ static sqlite3 *database = nil;
             char *password = (char *)sqlite3_column_text(statement, 1);
             NSString *strPassword = [[NSString alloc] initWithUTF8String:password];
             
+            NSLog(@"输入的值：%@,取出的值：%@",model.password,strPassword);
             // 将账号密码与数据库进行匹配如果存在则登入成功
             if ([model.username isEqualToString:strUsername] && [model.password isEqualToString:strPassword]) {
-                NSLog(@"登录成功");
+                NSLog(@"登录成功,%@",model.password);
                 return 1;
             }else{
                 NSLog(@"账号或密码错误");
@@ -181,7 +195,7 @@ static sqlite3 *database = nil;
     return 0;
 }
 
-
+// 获取中国时间
 -(void)loginLog:(DataModel *)model{
     // TESTING
     // 获取登录时间
@@ -193,6 +207,7 @@ static sqlite3 *database = nil;
     
 }
 
+// 获取GMT时间
 -(void)currentGMT:(DataModel *)model{
     NSDate *date = [NSDate date];
     NSTimeZone *tzGMT = [NSTimeZone timeZoneWithName:@"GMT"];
@@ -204,7 +219,8 @@ static sqlite3 *database = nil;
     NSLog(@"用户：%@ 的登入时间为：%@",model.username,timeString);
 }
 
-- (void)getInternetDate:(DataModel *)model
+// 获取网络时间
+-(void)getInternetDate:(DataModel *)model
 {
     
     NSString *urlString = @"https://m.baidu.com";
@@ -236,63 +252,54 @@ static sqlite3 *database = nil;
             NSTimeZone *zone = [NSTimeZone systemTimeZone];
             NSInteger interval = [zone secondsFromGMTForDate: netDate];
             NSDate *localeDate = [netDate dateByAddingTimeInterval: interval];
-            
             NSString *timeString = [dateMatter stringFromDate: localeDate];
-            NSLog(@"用户：%@ 的登入时间为：%@",model.username,timeString);
-        }else{
-            NSLog(@"%@",error);
-        }
+            NSLog(@"当前设备的登录时间为：%@,IP地址为：%@",timeString,[self getDeviceIPAddresses]);
+            
+            NSString *addSql = [NSString stringWithFormat:@"INSERT INTO t_DBLog (LoginName,IpAddress,LoginTime) VALUES ('%@','%@','%@');",model.username,[self getDeviceIPAddresses],timeString];
+            
+            sqlite3_exec(database, addSql.UTF8String, NULL, NULL, &errorMessage);
+                
+                // SQL执行结果
+                if (errorMessage == SQLITE_OK) {
+                    NSLog(@"插入成功");
+                }else{
+                    NSLog(@"插入失败");
+                }
+            }else{
+                NSLog(@"语句错误");
+            }
     }];
     
     [task resume];
 }
 
--(void)getDeviceIPAddresses
+// 获取设备IP地址
+-(NSString *)getDeviceIPAddresses
 {
     int sockfd = socket(AF_INET,SOCK_DGRAM, 0);
     // if (sockfd <</span> 0) return nil;
     NSMutableArray *ips = [NSMutableArray array];
-    
     int BUFFERSIZE =4096;
-    
     struct ifconf ifc;
-    
     char buffer[BUFFERSIZE], *ptr, lastname[IFNAMSIZ], *cptr;
-    
     struct ifreq *ifr, ifrcopy;
-    
     ifc.ifc_len = BUFFERSIZE;
-    
     ifc.ifc_buf = buffer;
-    
     if (ioctl(sockfd,SIOCGIFCONF, &ifc) >= 0){
-        
         for (ptr = buffer; ptr < buffer + ifc.ifc_len; ){
-            
             ifr = (struct ifreq *)ptr;
-            
             int len =sizeof(struct sockaddr);
-            
             if (ifr->ifr_addr.sa_len > len) {
                 len = ifr->ifr_addr.sa_len;
             }
-            
             ptr += sizeof(ifr->ifr_name) + len;
-            
             if (ifr->ifr_addr.sa_family !=AF_INET) continue;
-            
             if ((cptr = (char *)strchr(ifr->ifr_name,':')) != NULL) *cptr =0;
-            
             if (strncmp(lastname, ifr->ifr_name,IFNAMSIZ) == 0)continue;
-            
             memcpy(lastname, ifr->ifr_name,IFNAMSIZ);
-            
             ifrcopy = *ifr;
-            
             ioctl(sockfd,SIOCGIFFLAGS, &ifrcopy);
-            
             if ((ifrcopy.ifr_flags &IFF_UP) == 0)continue;
-            
             NSString *ip = [NSString stringWithFormat:@"%s",inet_ntoa(((struct sockaddr_in *)&ifr->ifr_addr)->sin_addr)];
             [ips addObject:ip];
         }
@@ -306,18 +313,32 @@ static sqlite3 *database = nil;
             deviceIP = [NSString stringWithFormat:@"%@",ips.lastObject];
         }
     }
-    NSLog(@"%@",deviceIP);
+    return deviceIP;
 }
 
-/**
--(void)createUserDataBaseTable:(DataModel *)model
+// 创建登录日志表
+-(void)createUserDataBaseTable
 {
-    NSString *createSql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(username TEXT NOT NULL PRIMARY KEY,IpAddress TEXT NOT NULL,LoginTime TEXT NOT NULL)",model.username];
+    NSString *createSql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS t_DBLog(ID INTEGER PRIMARY KEY ,LoginName TEXT NOT NULL,IpAddress TEXT NOT NULL,LoginTime TEXT NOT NULL);"];
     if (sqlite3_exec(database, createSql.UTF8String, NULL, NULL, &errorMessage) == SQLITE_OK) {
         NSLog(@"数据表创建成功");
     }else{
         NSLog(@"数据表创建失败");
     }
 }
-**/
+
+-(NSString *)MD5ForLower32Bite:(NSString *)md5String
+{
+    const char *input = [md5String UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(input, (CC_LONG)strlen(input), result);
+    
+    NSMutableString *digest = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for (NSInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [digest appendFormat:@"%02X", result[i]];
+    }
+    
+    return digest;
+}
+
 @end

@@ -20,10 +20,9 @@
     // static sqlite3 *database = nil;
     char *errorMessage;
     sqlite3_stmt *statement;
-    // NSBundle *documentDirectoty;
+    NSString *documentDirectoty;
     NSString *filePath;
 }
-
 //----------
 // 准备阶段  |
 //----------
@@ -58,14 +57,21 @@
 -(int)selectData:(DataModel *)model;
 
 //----------------------------------->
+// 获取本地时间
 -(void)loginLog:(DataModel *)model;
-
 -(void)currentGMT:(DataModel *)model;
 
+// 获取网络时间
 -(void)getInternetDate:(DataModel *)model;
 
--(void)getDeviceIPAddresses;
+// 获取设备外网IP
+-(NSString *)getDeviceIPAddresses;
 
--(void)createUserDataBaseTable:(DataModel *)model;
+// 新建数据库
+-(void)createUserDataBaseTable;
+
+// MD5加密
+-(NSString *)MD5ForLower32Bite:(NSString *)md5String;
+
 @end
 
